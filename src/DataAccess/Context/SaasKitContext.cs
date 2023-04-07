@@ -339,7 +339,7 @@ public partial class SaasKitContext : DbContext
             entity.Property(e => e.PlanId).HasColumnName("PlanID");
 
             entity.Property(e => e.Value)
-                .HasMaxLength(225)
+                .HasColumnType("nvarchar(max)")
                 .IsUnicode(false);
         });
 
