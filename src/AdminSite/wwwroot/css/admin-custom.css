@@ -511,3 +511,13 @@ button.navbar-toggler:focus, button.navbar-toggler:hover {
         text-decoration: none;
         cursor: pointer;
     }
+    
+.color-details-wrapper{
+    display: flex;
+    gap: 10px;
+}
+
+.color-details{
+    width: 100px;
+    height: 20px;
+}

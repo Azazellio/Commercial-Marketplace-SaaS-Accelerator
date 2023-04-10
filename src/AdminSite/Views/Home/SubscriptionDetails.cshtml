@@ -87,7 +87,6 @@
                                             @Html.HiddenFor(model => model.SubscriptionParameters[i].Value)
                                             <!-- Placeholder image -->
                                             @Html.DisplayName("No image available")
-                                            @* <p>No image available</p> *@
                                         }
                                     </dd>
                                 }
@@ -96,10 +95,22 @@
                                     <dt class="col-sm-3 p-2 p10 @Model.SubscriptionParameters[i].Type">
                                         @Html.DisplayFor(model => model.SubscriptionParameters[i].DisplayName, new { required = "required", @class = Model.SubscriptionParameters[i].Type })
                                     </dt>
-                                    <dd class="col-sm-9 p-2 p10">
-                                        @Html.DisplayFor(model => model.SubscriptionParameters[i].Value)
-                                        @Html.HiddenFor(model => model.SubscriptionParameters[i].Value)
-                                    </dd>
+                                    
+                                    if (Model.SubscriptionParameters[i].Htmltype.ToLower() == "color")
+                                    {
+                                        <dd class="col-sm-9 p-2 p10 color-details-wrapper">
+                                            <div class="color-details" style="background-color: @Model.SubscriptionParameters[i].Value"></div>
+                                             @Html.DisplayFor(model => model.SubscriptionParameters[i].Value)
+                                             @Html.HiddenFor(model => model.SubscriptionParameters[i].Value)
+                                        </dd>
+                                    }
+                                    else
+                                    {
+                                        <dd class="col-sm-9 p-2 p10">
+                                            @Html.DisplayFor(model => model.SubscriptionParameters[i].Value)
+                                            @Html.HiddenFor(model => model.SubscriptionParameters[i].Value)
+                                        </dd>
+                                    }
                                 }
                             }
                         }

@@ -96,8 +96,6 @@
                                         @Html.DisplayFor(model => model.SubscriptionParameters[i].DisplayName, new { required = "required", @class = @Model.SubscriptionParameters[i].Type })
                                         @if (Model.SubscriptionParameters[i].IsRequired == true)
                                         {<span class="red-star @Model.SubscriptionParameters[i].Type">*</span>}
-
-
                                     </dt>
                                 }
                                 else
@@ -151,9 +149,9 @@
                                     }
                                     else if (Model.SubscriptionParameters[i].Htmltype == "image")
                                     {
-                                        <dt class="col-sm-3 p-2 p10 @Model.SubscriptionParameters[i].Type">
+                                        <dd class="col-sm-3 p-2 p10 @Model.SubscriptionParameters[i].Type">
                                             <input type="file" accept="image/png, image/jpeg" name="file" id="file" class="form-control-file" />
-                                        </dt>
+                                        </dd>
                                     }
                                     else
                                     {
