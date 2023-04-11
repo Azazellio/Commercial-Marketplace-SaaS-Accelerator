@@ -150,7 +150,7 @@
                                     else if (Model.SubscriptionParameters[i].Htmltype == "image")
                                     {
                                         <dd class="col-sm-3 p-2 p10 @Model.SubscriptionParameters[i].Type">
-                                            <input type="file" accept="image/png, image/jpeg" name="file" id="file" class="form-control-file" />
+                                            <input type="file" accept="image/png, image/jpeg" onchange="validateImageSize(this)" name="file" id="file" class="form-control-file" />
                                         </dd>
                                     }
                                     else
@@ -291,6 +291,19 @@ async function readFileAsBase64(file) {
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
+}
+
+function validateImageSize(input) {
+  if (input.files && input.files[0]) {
+    var img = new Image();
+    img.onload = function() {
+      if (this.width != 512 || this.height != 512) {
+        alert('Image size must be 512x512 pixels.');
+        input.value = null;
+      }
+    };
+    img.src = URL.createObjectURL(input.files[0]);
+  }
 }
 
 function validate() {

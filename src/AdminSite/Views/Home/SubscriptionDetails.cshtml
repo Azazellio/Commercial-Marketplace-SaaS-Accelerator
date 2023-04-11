@@ -78,7 +78,7 @@
                                     <dd class="col-sm-9 p-2 p10">
                                         @if (!string.IsNullOrEmpty(Model.SubscriptionParameters[i].Value))
                                         {
-                                            <img src="data:image/png;base64,@Model.SubscriptionParameters[i].Value" style="margin-right: 30px;" />
+                                            <img src="data:image/png;base64,@Model.SubscriptionParameters[i].Value" style="margin-right: 30px; max-width: 40px; max-height: 40px" />
                                             <button type="button" class="btn btn-primary" onclick="downloadImage('@Model.SubscriptionParameters[i].Value')">Download Image</button>
                                         }
                                         else
