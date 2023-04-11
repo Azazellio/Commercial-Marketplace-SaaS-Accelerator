@@ -149,8 +149,9 @@
                                     }
                                     else if (Model.SubscriptionParameters[i].Htmltype == "image")
                                     {
-                                        <dd class="col-sm-3 p-2 p10 @Model.SubscriptionParameters[i].Type">
+                                        <dd class="col-sm-3 p-2 p10 @Model.SubscriptionParameters[i].Type" style="display: flex; gap: 30px;">
                                             <input type="file" accept="image/png, image/jpeg" onchange="validateImageSize(this)" name="file" id="file" class="form-control-file" />
+                                            <img id="preview" style="display:none; width: 30px; height: 30px;" />
                                         </dd>
                                     }
                                     else
@@ -300,10 +301,27 @@ function validateImageSize(input) {
       if (this.width != 512 || this.height != 512) {
         alert('Image size must be 512x512 pixels.');
         input.value = null;
+        document.getElementById('preview').src = "";
+        document.getElementById('preview').style.display = 'none';
+      }
+      else{
+          previewImage(input);
       }
     };
     img.src = URL.createObjectURL(input.files[0]);
   }
+}
+
+function previewImage(input) {
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = function(e) {
+        document.getElementById('preview').src = e.target.result;
+        document.getElementById('preview').style.display = 'block';
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
 }
 
 function validate() {
